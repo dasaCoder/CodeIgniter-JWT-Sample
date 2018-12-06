@@ -2,56 +2,49 @@
 
 Simple Codeigniter, REST Server, JWT implementation.
 
-**Update**
 
-As per multiple requests, I am adding logic for timeout.  
-Please check ```application\controllers\Authtimeout.php``` for more details.
-
-**Note:** I did not add logic for expired token replacement after timeout.
-
-
-Setup using this repo
-=====
-
-
-Set up project on php server (XAMPP/Linux). 
-  
-* `encryption_key` in `application\config\config.php`  
-[Encryption key generator] (http://jeffreybarke.net/tools/codeigniter-encryption-key-generator/)  
-```
-$config['encryption_key'] = '';
-```  
-
-* `jwt_key` in `application\config\jwt.php`
-
-```
-$config['jwt_key']	= '';
-```
-
-* **For Timeout** `token_timeout` in `application\config\jwt.php`
-
-```
-$config['token_timeout']	= ;
-```
+**Note:** This repo is forked from [ParitoshVaidya/CodeIgniter-JWT-Sample](https://github.com/ParitoshVaidya/CodeIgniter-JWT-Sample)
 
 
 Setup for existing projects
 =====
 
 
-You will need following files:
+You will need following files ( copy this files and place them inside your project):
 
 **/application/config/jwt.php** <= Add **jwt_key** here
-**/application/helpers/authorization_helper.php
-/application/helpers/jwt_helper.php**
 
-In **/application/config/autoload.php** add 
+**/application/helpers/authorization_helper.php**
+
+**/application/helpers/jwt_helper.php**
+
+In **/application/config/autoload.php** add following...
 ```
 $autoload['helper'] = array('url', 'form', 'jwt', "authorization");
 $autoload['config'] = array('jwt');
 ```
 
-That's it. You are ready. Add your logic to generate token, eg.
+That's it. You are ready. 
+
+Configuration
+=====
+
+In your `application\config\jwt.php` file,
+
+* `jwt_key` 
+
+```
+$config['jwt_key']	= '';
+```
+
+* **For Timeout** `token_timeout` 
+
+```
+$config['token_timeout']	= 60; // unit used here is minutes eg:- here timeout is 60 minutes
+```
+
+
+Add your logic to generate token, eg.
 
 ```
 $tokenData = array();
