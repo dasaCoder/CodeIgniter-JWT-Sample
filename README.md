@@ -18,16 +18,18 @@ You will need following files ( copy this files and place them inside your proje
 
 **/application/helpers/jwt_helper.php**
 
-In **/application/config/autoload.php** add following...
-```
-$autoload['helper'] = array('url', 'form', 'jwt', "authorization");
-$autoload['config'] = array('jwt');
-```
+
 
 That's it. You are ready. 
 
 Configuration
 =====
+
+In **/application/config/autoload.php** add following...
+```
+$autoload['helper'] = array('url', 'form', 'jwt', "authorization");
+$autoload['config'] = array('jwt');
+```
 
 In your `application\config\jwt.php` file,
 
@@ -47,9 +49,32 @@ $config['token_timeout']	= 60; // unit used here is minutes eg:- here timeout is
 Add your logic to generate token, eg.
 
 ```
-$tokenData = array();
-$tokenData['id'] = 1; //TODO: Replace with data for token
-$output['token'] = AUTHORIZATION::generateToken($tokenData);
+    // generate token
+    public function generateToken()
+    {
+        $tokenData = array();
+        $tokenData['id'] = 1;
+        $output['token'] = AUTHORIZATION::generateToken($tokenData);
+
+        echo json_encode($output);
+
+    }
+
+    //validate token
+    public function validateToken()
+    {
+        $headers = $this->input->request_headers();
+        $token = $headers["Authorization"];
+        try
+        {
+            echo json_encode(AUTHORIZATION::validateToken($token));
+        }
+        catch (Exception $exception)
+        {
+            echo "verification Failed";
+        }
+
+    }
 ```
 
 Please reply, if you need additional details. Happy coding!
