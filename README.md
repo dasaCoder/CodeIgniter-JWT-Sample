@@ -12,7 +12,7 @@ Setup for existing projects
 
 You will need following files ( copy this files and place them inside your project):
 
-**/application/config/jwt.php** <= Add **jwt_key** here
+**/application/config/jwt.php** 
 
 **/application/helpers/authorization_helper.php**
 
