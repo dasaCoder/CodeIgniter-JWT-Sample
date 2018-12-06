@@ -15,11 +15,7 @@ Setup using this repo
 
 
 Set up project on php server (XAMPP/Linux). 
-
-* **.htaccess** file at project root
-
-    This project contains .htaccess file for windows machine. Please update this file as per your requirements.  
-[Sample htaccess code (Win/Linux)] (http://stackoverflow.com/questions/28525870/removing-index-php-from-url-in-codeigniter-on-mandriva)  
+  
 * `encryption_key` in `application\config\config.php`  
 [Encryption key generator] (http://jeffreybarke.net/tools/codeigniter-encryption-key-generator/)  
 ```
